@@ -105,21 +105,26 @@ const start = () => {
 
   let count = 3;
   countdownOverlay.style.display = "flex";
+  // console.log(countdownOverlay)
 
   const startCountdown = setInterval(() => {
-    countdownOverlay.innerHTML = '<h1>${count}</h1>';
+		console.log(startCountdown);
+    // countdownOverlay.innerHTML = "<h1>${count}</h1>";
+    
+    	countdownOverlay.innerText = `${count}`;
 
-    // finished timer
-    if (count == 0) {
-      // -------------- START TYPING -----------------
-      document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "flex";
-      display.classList.remove("inactive");
+		// finished timer
+		if (count == 0) {
+			// -------------- START TYPING -----------------
+			document.addEventListener("keydown", typeController);
+      countdownOverlay.style.display = "none";
+      
+			display.classList.remove("inactive");
 
-      clearInterval(startCountdown);
-      startTime = new Date().getTime();
-    }
-    count--;
+			clearInterval(startCountdown);
+			startTime = new Date().getTime();
+		}
+		count--;
   }, 1000);
 };
 
