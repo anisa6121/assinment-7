@@ -63,6 +63,7 @@ const typeController = (e) => {
   else {
     // console.log(newLetterCorrect)
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+    errorCount++
 
   
   }
