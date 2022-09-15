@@ -8,6 +8,7 @@ const modalBackground = document.getElementById("modal-background");
 // variables
 let userText = "";
 let errorCount = 0;
+
 let startTime;
 let questionText = "";
 
@@ -21,27 +22,34 @@ fetch("./texts.json")
 
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
-  console.log(e)
+
   const newLetter = e.key;
-  console.log(newLetter)
+
+
 
   // Handle backspace press
   if (newLetter == "Backspace") {
     userText = userText.slice(0, userText.length - 1);
-      console.log(userText)
+
+    // console.log(userText.length)
+
     return display.removeChild(display.lastChild);
   }
 
   // these are the valid character we are allowing to type
   const validLetters =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890!@#$%^&*()_+-={}[]'\".,?";
+  
+  
 
   // if it is not a valid character like Control/Alt then skip displaying anything
   if (!validLetters.includes(newLetter)) {
     return ;
   }
+ 
 
   userText += newLetter;
+ 
 
   const newLetterCorrect = validate(newLetter);
 
@@ -55,6 +63,7 @@ const typeController = (e) => {
   else {
     // console.log(newLetterCorrect)
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+
   
   }
 
@@ -65,11 +74,16 @@ const typeController = (e) => {
 };
 
 const validate = (key) => {
-
-  if (key === questionText[userText.length - 1]) {
+// console.log(key.length)
+  if (key === questionText[userText.length -1]) {
     return true;
   }
-  return false;
+  else {
+    return false;
+ 
+  }
+
+
 };
 
 // FINISHED TYPING
@@ -89,16 +103,17 @@ const gameOver = () => {
   // clear user text
   display.innerHTML = "";
   // make it inactive
-  display.classList.add("inactive");
+  display.classList.add("inactive");  
   // show result
   resultModal.innerHTML += `
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
-    <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
+    <p>You made <span class="bol red">${errorCount}</span> mistakes</p>
     <button onclick="closeModal()">Close</button>
   `;
 
   addHistory(questionText, timeTaken, errorCount);
+
   
 
   // restart everything
@@ -129,14 +144,15 @@ const startCountdown = setInterval(() => {
 		// finished timer
 		if (count == 0) {
 			// -------------- START TYPING -----------------
-			document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "none";
+  document.addEventListener("keydown", typeController);
       
-			display.classList.remove("inactive");
+  countdownOverlay.style.display = "none";
+      
+	display.classList.remove("inactive");
 
 			clearInterval(startCountdown);
 			startTime = new Date().getTime();
-		}
+		}        
 		count--;
   }, 1000);
 };
