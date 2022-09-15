@@ -20,7 +20,7 @@
 
 <section class="container">
 <div >
- <p class="mt-5 fs-4 text-warning">1 Difference Between Local Storage, Session Storage </p>
+ <p class="mt-5 fs-4 text-warning">1 : Difference Between Local Storage, Session Storage </p>
  <p class="text-danger"><span class="text-dark fw-bold">LocalStorage:</span>
 Web storage can be viewed simplistically as an improvement on cookies, providing much greater storage capacity.
 Available size is 5MB which considerably more space to work with than a typical 4KB cookie.
@@ -37,9 +37,24 @@ The data is available only inside the window/tab in which it was set​
 
 </p>
  </div>
+<p class="fs-4 text-warning">2 : What is the difference between global scope and block scope? </p>
 
+<p class="text-danger">
+<span class="text-dark fw-bold">The Global scope: </span>
 
+A variable exists inside or outside a block. If a variable is declared outside all functions or curly braces ({}), it
+exists in the global scope. The global variables can be accessed by any line of code in the program, including inside
+blocks.
 
+<br>
+<span class="text-dark fw-bold">The Local scope</span>
+
+In contrast to global variables, locally scoped ones are only visible within the function they are declared. Each
+function written in JavaScript creates a new local scope and every variable declared in this scope is a local variable.
+That means that variables with the same name can be used in different functions. However, any effort to reference a
+local variable outside its scope will result in a Reference Error:
+
+</p>
 
    </section> 
 
