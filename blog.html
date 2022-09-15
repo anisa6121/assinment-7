@@ -37,6 +37,8 @@ The data is available only inside the window/tab in which it was set​
 
 </p>
  </div>
+
+ <div>
 <p class="fs-4 text-warning">2 : What is the difference between global scope and block scope? </p>
 
 <p class="text-danger">
@@ -55,6 +57,27 @@ That means that variables with the same name can be used in different functions.
 local variable outside its scope will result in a Reference Error:
 
 </p>
+</div>
+
+
+
+<div>
+    <p class="text-warning fs-2">3 Event Loop in JavaScript: </p>
+
+    <p class="text-danger">
+JavaScript is a single-threaded language. In other words, it can do only one thing at a time. JavaScript executes all
+operations on a single thread, but using a few smart data structures, gives us the illusion of multi-threading. The
+event loop is the secret behind JavaScript’s asynchronous programming. <br>
+JavaScript engine executes a script from the top and works its way down creating execution contexts and pushing and
+popping functions onto and off the call stack.
+
+<br>
+The Event Loop has one simple job — to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, the
+Event Loop will take the first event from the queue and will push it to the Call Stack, which effectively runs it.
+
+    </p>
+</div>
+
 
    </section> 
 
