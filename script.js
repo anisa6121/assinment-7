@@ -21,6 +21,7 @@ fetch("./texts.json")
 
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
+  console.log(e)
   const newLetter = e.key;
   console.log(newLetter)
 
@@ -37,17 +38,24 @@ const typeController = (e) => {
 
   // if it is not a valid character like Control/Alt then skip displaying anything
   if (!validLetters.includes(newLetter)) {
-    return;
+    return ;
   }
 
   userText += newLetter;
 
   const newLetterCorrect = validate(newLetter);
 
+  // ===
+
   if (newLetterCorrect) {
+   
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
-  } else {
+  }
+  
+  else {
+    // console.log(newLetterCorrect)
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+  
   }
 
   // check if given question text is equal to user typed text
@@ -57,6 +65,7 @@ const typeController = (e) => {
 };
 
 const validate = (key) => {
+
   if (key === questionText[userText.length - 1]) {
     return true;
   }
@@ -70,6 +79,8 @@ const gameOver = () => {
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
   const timeTaken = ((finishTime - startTime) / 1000).toFixed(2);
+
+
 
   // show result modal
   resultModal.innerHTML = "";
@@ -107,10 +118,9 @@ const start = () => {
 
   let count = 3;
   countdownOverlay.style.display = "flex";
-  // console.log(countdownOverlay)
 
-  const startCountdown = setInterval(() => {
-		console.log(startCountdown);
+const startCountdown = setInterval(() => {
+	
     // countdownOverlay.innerHTML = "<h1>${count}</h1>";
     
     	countdownOverlay.innerText = `${count}`;
