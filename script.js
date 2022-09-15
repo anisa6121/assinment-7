@@ -22,10 +22,12 @@ fetch("./texts.json")
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
   const newLetter = e.key;
+  console.log(newLetter)
 
   // Handle backspace press
   if (newLetter == "Backspace") {
     userText = userText.slice(0, userText.length - 1);
+      console.log(userText)
     return display.removeChild(display.lastChild);
   }
 
@@ -67,7 +69,7 @@ const gameOver = () => {
   // the current time is the finish time
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
-  const timeTaken = (finishTime - startTime) / 1000;
+  const timeTaken = ((finishTime - startTime) / 1000).toFixed(2);
 
   // show result modal
   resultModal.innerHTML = "";
